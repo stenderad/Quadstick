@@ -138,7 +138,7 @@ class CustomTaskBarIcon(wx.adv.TaskBarIcon):
         
         # self.SetIcon(self.icon, "Restore")
         ib = wx.IconBundle()
-        ib.AddIcon(resource_path("quadstickx.ico"), wx.BITMAP_TYPE_ANY)
+        ib.AddIcon(resource_path("../assets/quadstickx.ico"), wx.BITMAP_TYPE_ANY)
         i = ib.GetIcon(wx.Size(24,24))
         self.SetIcon(i)
         self.Bind(wx.adv.EVT_TASKBAR_LEFT_DOWN, self.OnTaskBarLeftClick)
@@ -2989,7 +2989,7 @@ class QuadStickPreferences(wx.Frame):
     def set_properties(self, dummy):
         print ('SET PROPERTIES *******************************************************************************')
         ib = wx.IconBundle()
-        ib.AddIcon(resource_path("quadstickx.ico"), wx.BITMAP_TYPE_ANY)
+        ib.AddIcon(resource_path("../assets/quadstickx.ico"), wx.BITMAP_TYPE_ANY)
         self.SetIcons(ib)
         # # Content of this block not found. Did you rename this class?
         # pass

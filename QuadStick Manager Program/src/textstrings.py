@@ -62,7 +62,7 @@ RED_DOT = """<?xml version="1.0" encoding="UTF-8" standalone="no"?>
    version="1.1"
    id="svg8"
    inkscape:version="0.92.0 r15299"
-   sodipodi:docname="red.svg">
+   sodipodi:docname=".../assets/img/red.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -130,7 +130,7 @@ BLUE_DOT = """<?xml version="1.0" encoding="UTF-8" standalone="no"?>
    version="1.1"
    id="svg8"
    inkscape:version="0.92.0 r15299"
-   sodipodi:docname="blue.svg">
+   sodipodi:docname=".../assets/img/blue.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -198,7 +198,7 @@ GREY_DOT = """<?xml version="1.0" encoding="UTF-8" standalone="no"?>
    version="1.1"
    id="svg8"
    inkscape:version="0.92.0 r15299"
-   sodipodi:docname="grey.svg">
+   sodipodi:docname=".../assets/img/grey.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -266,7 +266,7 @@ PURPLE_DOT = """<?xml version="1.0" encoding="UTF-8" standalone="no"?>
    version="1.1"
    id="svg8"
    inkscape:version="0.92.0 r15299"
-   sodipodi:docname="purple.svg">
+   sodipodi:docname=".../assets/img/purple.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -318,38 +318,62 @@ PURPLE_DOT = """<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 </svg>
 """
 
-LED_PATTERN = {
-    1:  '<img src="purple.svg"><img src="grey.svg"><img src="grey.svg"><img src="grey.svg"><img src="grey.svg">',
-    2:  '<img src="grey.svg"><img src="purple.svg"><img src="grey.svg"><img src="grey.svg"><img src="grey.svg">',
-    3:  '<img src="grey.svg"><img src="grey.svg"><img src="purple.svg"><img src="grey.svg"><img src="grey.svg">',
-    4:  '<img src="grey.svg"><img src="grey.svg"><img src="grey.svg"><img src="purple.svg"><img src="grey.svg">',
-    5:  '<img src="grey.svg"><img src="grey.svg"><img src="grey.svg"><img src="grey.svg"><img src="purple.svg">',
-    6:  '<img src="purple.svg"><img src="grey.svg"><img src="grey.svg"><img src="grey.svg"><img src="purple.svg">',
-    7:  '<img src="grey.svg"><img src="purple.svg"><img src="grey.svg"><img src="grey.svg"><img src="purple.svg">',
-    8:  '<img src="grey.svg"><img src="grey.svg"><img src="purple.svg"><img src="grey.svg"><img src="purple.svg">',
-    9:  '<img src="grey.svg"><img src="grey.svg"><img src="grey.svg"><img src="purple.svg"><img src="purple.svg">',
-   10:  '<img src="grey.svg"><img src="grey.svg"><img src="grey.svg"><img src="grey.svg"><img src="blue.svg">',
-   11:  '<img src="purple.svg"><img src="grey.svg"><img src="grey.svg"><img src="grey.svg"><img src="blue.svg">',
-   12:  '<img src="grey.svg"><img src="purple.svg"><img src="grey.svg"><img src="grey.svg"><img src="blue.svg">',
-   13:  '<img src="grey.svg"><img src="grey.svg"><img src="purple.svg"><img src="grey.svg"><img src="blue.svg">',
-   14:  '<img src="grey.svg"><img src="grey.svg"><img src="grey.svg"><img src="purple.svg"><img src="blue.svg">',
-   15:  '<img src="grey.svg"><img src="grey.svg"><img src="grey.svg"><img src="grey.svg"><img src="red.svg">',
-   16:  '<img src="purple.svg"><img src="grey.svg"><img src="grey.svg"><img src="grey.svg"><img src="red.svg">',
-   17:  '<img src="grey.svg"><img src="purple.svg"><img src="grey.svg"><img src="grey.svg"><img src="red.svg">',
-   18:  '<img src="grey.svg"><img src="grey.svg"><img src="purple.svg"><img src="grey.svg"><img src="red.svg">',
-   19:  '<img src="grey.svg"><img src="grey.svg"><img src="grey.svg"><img src="purple.svg"><img src="red.svg">',
-   20:  '<img src="blue.svg"><img src="blue.svg"><img src="blue.svg"><img src="blue.svg"><img src="blue.svg">',
-   21:  '<img src="purple.svg"><img src="blue.svg"><img src="blue.svg"><img src="blue.svg"><img src="blue.svg">',
-   22:  '<img src="blue.svg"><img src="purple.svg"><img src="blue.svg"><img src="blue.svg"><img src="blue.svg">',
-   23:  '<img src="blue.svg"><img src="blue.svg"><img src="purple.svg"><img src="blue.svg"><img src="blue.svg">',
-   24:  '<img src="blue.svg"><img src="blue.svg"><img src="blue.svg"><img src="purple.svg"><img src="blue.svg">',
-   25:  '<img src="blue.svg"><img src="blue.svg"><img src="blue.svg"><img src="blue.svg"><img src="purple.svg">',
-   26:  '<img src="purple.svg"><img src="blue.svg"><img src="blue.svg"><img src="blue.svg"><img src="purple.svg">',
-   27:  '<img src="blue.svg"><img src="purple.svg"><img src="blue.svg"><img src="blue.svg"><img src="purple.svg">',
-   28:  '<img src="blue.svg"><img src="blue.svg"><img src="purple.svg"><img src="blue.svg"><img src="purple.svg">',
-   29:  '<img src="blue.svg"><img src="blue.svg"><img src="blue.svg"><img src="purple.svg"><img src="purple.svg">',
-   30:  '<img src="red.svg"><img src="red.svg"><img src="red.svg"><img src="red.svg"><img src="purple.svg">',
-   30:  '<img src="red.svg"><img src="red.svg"><img src="red.svg"><img src="red.svg"><img src="purple.svg">',
-   31:  '<img src="purple.svg"><img src="red.svg"><img src="red.svg"><img src="red.svg"><img src="red.svg">',
-   32:  '<img src="red.svg"><img src="purple.svg"><img src="red.svg"><img src="red.svg"><img src="red.svg">',
-}
+maxPatterns = 35 #(was 33, but this should work)
+cols = 5
+LED_PATTERN = {}
+
+for i in range(maxPatterns):
+   baseColor = "grey"
+   if i >=19: baseColor = "blue"
+   if i >= 29: baseColor ="red"
+
+   pat = [baseColor for j in range(cols)]
+   pat[i % cols] = "purple"
+
+   if((i >= 4 and i < 9) or (i >= 24 and i < 29)): pat[-1] = "purple"
+   if((i >= 9 and i < 14) or (i >= 19 and i < 24)): pat[-1] = "blue"
+   if((i >= 14 and i < 19) ): pat[-1] = "red "
+
+   LED_PATTERN[i+1] = "".join(['<img src=".../assets/img/' + color + '.svg">' for color in pat]) #keeping 1-indexing support
+
+# LED_PATTERN = { #NO
+#     1:  '<img src=".../assets/img/purple.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg">',
+#     2:  '<img src=".../assets/img/grey.svg"><img src=".../assets/img/purple.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg">',
+#     3:  '<img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/purple.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg">',
+#     4:  '<img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/purple.svg"><img src=".../assets/img/grey.svg">',
+#     5:  '<img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/purple.svg">',
+
+#     6:  '<img src=".../assets/img/purple.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/purple.svg">',
+#     7:  '<img src=".../assets/img/grey.svg"><img src=".../assets/img/purple.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/purple.svg">',
+#     8:  '<img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/purple.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/purple.svg">',
+#     9:  '<img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/purple.svg"><img src=".../assets/img/purple.svg">',
+
+#    10:  '<img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/blue.svg">',
+#    11:  '<img src=".../assets/img/purple.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/blue.svg">',
+#    12:  '<img src=".../assets/img/grey.svg"><img src=".../assets/img/purple.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/blue.svg">',
+#    13:  '<img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/purple.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/blue.svg">',
+#    14:  '<img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/purple.svg"><img src=".../assets/img/blue.svg">',
+
+#    15:  '<img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/red.svg">',
+#    16:  '<img src=".../assets/img/purple.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/red.svg">',
+#    17:  '<img src=".../assets/img/grey.svg"><img src=".../assets/img/purple.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/red.svg">',
+#    18:  '<img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/purple.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/red.svg">',
+#    19:  '<img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/grey.svg"><img src=".../assets/img/purple.svg"><img src=".../assets/img/red.svg">',
+
+#    20:  '<img src=".../assets/img/blue.svg"><img src=".../assets/img/blue.svg"><img src=".../assets/img/blue.svg"><img src=".../assets/img/blue.svg"><img src=".../assets/img/blue.svg">',
+#    21:  '<img src=".../assets/img/purple.svg"><img src=".../assets/img/blue.svg"><img src=".../assets/img/blue.svg"><img src=".../assets/img/blue.svg"><img src=".../assets/img/blue.svg">',
+#    22:  '<img src=".../assets/img/blue.svg"><img src=".../assets/img/purple.svg"><img src=".../assets/img/blue.svg"><img src=".../assets/img/blue.svg"><img src=".../assets/img/blue.svg">',
+#    23:  '<img src=".../assets/img/blue.svg"><img src=".../assets/img/blue.svg"><img src=".../assets/img/purple.svg"><img src=".../assets/img/blue.svg"><img src=".../assets/img/blue.svg">',
+#    24:  '<img src=".../assets/img/blue.svg"><img src=".../assets/img/blue.svg"><img src=".../assets/img/blue.svg"><img src=".../assets/img/purple.svg"><img src=".../assets/img/blue.svg">',
+
+#    25:  '<img src=".../assets/img/blue.svg"><img src=".../assets/img/blue.svg"><img src=".../assets/img/blue.svg"><img src=".../assets/img/blue.svg"><img src=".../assets/img/purple.svg">',
+#    26:  '<img src=".../assets/img/purple.svg"><img src=".../assets/img/blue.svg"><img src=".../assets/img/blue.svg"><img src=".../assets/img/blue.svg"><img src=".../assets/img/purple.svg">',
+#    27:  '<img src=".../assets/img/blue.svg"><img src=".../assets/img/purple.svg"><img src=".../assets/img/blue.svg"><img src=".../assets/img/blue.svg"><img src=".../assets/img/purple.svg">',
+#    28:  '<img src=".../assets/img/blue.svg"><img src=".../assets/img/blue.svg"><img src=".../assets/img/purple.svg"><img src=".../assets/img/blue.svg"><img src=".../assets/img/purple.svg">',
+#    29:  '<img src=".../assets/img/blue.svg"><img src=".../assets/img/blue.svg"><img src=".../assets/img/blue.svg"><img src=".../assets/img/purple.svg"><img src=".../assets/img/purple.svg">',
+   
+#    30:  '<img src=".../assets/img/red.svg"><img src=".../assets/img/red.svg"><img src=".../assets/img/red.svg"><img src=".../assets/img/red.svg"><img src=".../assets/img/purple.svg">', #guessing this is a bug (duplicates here)
+#    30:  '<img src=".../assets/img/red.svg"><img src=".../assets/img/red.svg"><img src=".../assets/img/red.svg"><img src=".../assets/img/red.svg"><img src=".../assets/img/purple.svg">',
+#    31:  '<img src=".../assets/img/purple.svg"><img src=".../assets/img/red.svg"><img src=".../assets/img/red.svg"><img src=".../assets/img/red.svg"><img src=".../assets/img/red.svg">',
+#    32:  '<img src=".../assets/img/red.svg"><img src=".../assets/img/purple.svg"><img src=".../assets/img/red.svg"><img src=".../assets/img/red.svg"><img src=".../assets/img/red.svg">',
+# }

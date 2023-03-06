@@ -4,15 +4,18 @@
 
 ## Setup instructions
 
-After installing Vocola python runtime libraries (wxpython, etc)...
+After installing Vocola python runtime libraries (wxpython, etc)... (? just installing python?)
 
-Install the following pip packages
+Install the following pip packages by running
+
+`pip install requirements.txt`
+
+or
 
 `pip install wxPython pyinstall pyserial pywinusb openpyxl rfc6266 pyrfc6266`
 
-OR run `pip install requirements.txt`
 
 ## To build a release
+
 run `pyinstall QuadStick.spec`
 The generagted exe will be in dist folder
-

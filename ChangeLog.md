@@ -29,3 +29,5 @@ add voice commands as sheet in config file instead of separate file
 color code company config files vs user
 
 move back from S3 to google drive for version.ini and firmware
+
+3/5/2023: Moved src, build, and assets into seperate folders

@@ -14,6 +14,12 @@ or
 
 `pip install wxPython pyinstall pyserial pywinusb openpyxl rfc6266 pyrfc6266`
 
+### To run:
+
+`python Quadstick.py `
+
+(TODO change this to main (create))
+
 
 ## To build a release
 

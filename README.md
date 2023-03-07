@@ -12,7 +12,7 @@ Install the following pip packages by running
 
 or
 
-`pip install wxPython pyinstall pyserial pywinusb openpyxl rfc6266 pyrfc6266`
+`pip install wxPython pyinstall pyserial pywinusb openpyxl rfc6266 pyrfc6266 vgamepad`
 
 ### To run:
 

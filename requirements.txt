@@ -5,3 +5,4 @@ pywinusb
 openpyxl
 rfc6266
 pyrfc6266
+vgamepad

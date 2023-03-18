@@ -30,4 +30,4 @@ color code company config files vs user
 
 move back from S3 to google drive for version.ini and firmware
 
-3/5/2023: Moved src, build, and assets into seperate folders
+3/5/2023: Moved src and assets into seperate folders. Still want to move build stuff out - Sarah

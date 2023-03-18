@@ -318,6 +318,7 @@ PURPLE_DOT = """<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 </svg>
 """
 
+#Generate color patterns for portfolios
 maxPatterns = 35 #(was 33, but this should work)
 cols = 5
 LED_PATTERN = {}

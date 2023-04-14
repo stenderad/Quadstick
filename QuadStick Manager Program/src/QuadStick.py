@@ -2168,18 +2168,35 @@ class QuadStickPreferences(wx.Frame):
                     gps = self._game_profiles #factory
                 try:
                     gp = gps[item]
-                    id = gp["id"]
-                    path = urllib.parse.quote(gp["name"])
-                    d = find_quadstick_drive()
-                    print("download csv: ", id, d)
-                    if xlsx2csv.write_csv_file_for(id, d, self): # download and copy csv into quadstick
-                        if self._last_game_list_selected == self.user_game_files_list:
-                            info, wb = xlsx2csv.get_config_profile_info(id)
-                            if info:  # if the csv filename changed, update user list
-                                if gp.get("name") != info.get("name"):
-                                    gp['name'] = info['name']
-                                    self.update_user_game_files_list_items()                       
-                        self.text_ctrl_messages.AppendText("Downloaded %s into QuadStick\n" % (gp["name"],))
+                    if gp["csv_name"] == "default.csv":
+                        dlg = wx.MessageBox("Do you want to override the default configuration?", "Default Override", wx.YES_NO | wx.ICON_QUESTION)
+                        dlg.ShowModal()
+                        if dlg == 2:
+                            id = gp["id"]
+                            path = urllib.parse.quote(gp["name"])
+                            d = find_quadstick_drive()
+                            print("download csv: ", id, d)
+                            if xlsx2csv.write_csv_file_for(id, d, self): # download and copy csv into quadstick
+                                if self._last_game_list_selected == self.user_game_files_list:
+                                    info, wb = xlsx2csv.get_config_profile_info(id)
+                                    if info:  # if the csv filename changed, update user list
+                                        if gp.get("name") != info.get("name"):
+                                            gp['name'] = info['name']
+                                            self.update_user_game_files_list_items()                       
+                                self.text_ctrl_messages.AppendText("Downloaded %s into QuadStick\n" % (gp["name"],))
+                    else :
+                        id = gp["id"]
+                        path = urllib.parse.quote(gp["name"])
+                        d = find_quadstick_drive()
+                        print("download csv: ", id, d)
+                        if xlsx2csv.write_csv_file_for(id, d, self): # download and copy csv into quadstick
+                            if self._last_game_list_selected == self.user_game_files_list:
+                                info, wb = xlsx2csv.get_config_profile_info(id)
+                                if info:  # if the csv filename changed, update user list
+                                    if gp.get("name") != info.get("name"):
+                                        gp['name'] = info['name']
+                                        self.update_user_game_files_list_items()                       
+                            self.text_ctrl_messages.AppendText("Downloaded %s into QuadStick\n" % (gp["name"],))
                 except Exception as e:
                     print(repr(e))
                     pass

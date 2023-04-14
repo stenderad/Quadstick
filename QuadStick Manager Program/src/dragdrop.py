@@ -75,7 +75,7 @@ class MainWindow(wx.Frame):
        menuBar = wx.MenuBar()
        # Build a Menu Object to go into the Menu Bar
        menu1 = wx.Menu()
-       menu1.Append(MENU_FILE_EXIT, "E&xit", "Quit Application")
+       menu1.Append(MENU_FILE_EXIT, "Exit", "Quit Application")
        # Place the Menu Item in the Menu Bar
        menuBar.Append(menu1, "&File")
        # Place the Menu Bar on the ap

@@ -1613,7 +1613,7 @@ class QuadStickPreferences(wx.Frame):
             dialog = UnableToSave(self, wx.ID_ANY, "")
             dialog.ShowModal()
             dialog.Destroy()
-            self.text_ctrl_messages.SetDefaultStyle(wx.TextAttr("black", "red"))
+            self.text_ctrl_messages.SetDefaultStyle(wx.TextAttr("black", wx.Colour(255, 150, 150)))
             self.text_ctrl_messages.AppendText("Failed to save preferences\r\n")
             self.text_ctrl_messages.SetDefaultStyle(wx.TextAttr("black", "white"))
    
@@ -1866,7 +1866,7 @@ class QuadStickPreferences(wx.Frame):
             self.checkbox_ps4_boot_mode.Enable()
         if build_number is not None and build_number < 1301:
             if US1:
-                self.text_ctrl_messages.SetDefaultStyle(wx.TextAttr("black", "red"))
+                self.text_ctrl_messages.SetDefaultStyle(wx.TextAttr("black", wx.Colour(255, 150, 150)))
                 self.text_ctrl_messages.AppendText("You will need to update the Firmware to use the UltraStik")
                 self.text_ctrl_messages.SetDefaultStyle(wx.TextAttr("black", "white"))
         if vocola_installed:
@@ -1910,7 +1910,7 @@ class QuadStickPreferences(wx.Frame):
                         filename = self.list_box_csv_files.GetItem(selection, 1).GetText()
                         print(repr(filename))
                         if filename == 'default.csv' or filename == 'prefs.csv':
-                            self.text_ctrl_messages.SetDefaultStyle(wx.TextAttr("black", "red"))
+                            self.text_ctrl_messages.SetDefaultStyle(wx.TextAttr("black", wx.Colour(255, 150, 150)))
                             self.text_ctrl_messages.AppendText("Sorry, cannot remove: " + filename + "\n")
                             self.text_ctrl_messages.SetDefaultStyle(wx.TextAttr("black", "white"))
                         else:
@@ -1925,7 +1925,7 @@ class QuadStickPreferences(wx.Frame):
                                 #refresh list
                             except Exception as e:
                                 print("DeleteFromQuadStickEvent exception: ", repr(e))
-                                self.text_ctrl_messages.SetDefaultStyle(wx.TextAttr("black", "red"))
+                                self.text_ctrl_messages.SetDefaultStyle(wx.TextAttr("black", wx.Colour(255, 150, 150)))
                                 self.text_ctrl_messages.AppendText("Exception while removing: " + filename + "\n")
                                 self.text_ctrl_messages.SetDefaultStyle(wx.TextAttr("black", "white"))
                         selection = self.list_box_csv_files.GetNextSelected(selection)
@@ -2099,7 +2099,7 @@ class QuadStickPreferences(wx.Frame):
                     gps.append(info)
                 settings["user_game_profiles"] = sorted(gps, key=lambda f: f['name'].lower()) # update settings with sorted list
             else:
-                self.text_ctrl_messages.SetDefaultStyle(wx.TextAttr("black", "red"))
+                self.text_ctrl_messages.SetDefaultStyle(wx.TextAttr("black", wx.Colour(255, 150, 150)))
                 self.text_ctrl_messages.AppendText("Error: Google spreadsheet is not publicly shared or published\n" )
                 self.text_ctrl_messages.SetDefaultStyle(wx.TextAttr("black", "white"))
             self.update_user_game_files_list_items()
@@ -2135,12 +2135,12 @@ class QuadStickPreferences(wx.Frame):
                     self.text_ctrl_messages.AppendText("Copied %s into QuadStick\n" % (info["csv_name"],))
                     self.update_quadstick_flash_files_items()
             else:
-                self.text_ctrl_messages.SetDefaultStyle(wx.TextAttr("black", "red"))
+                self.text_ctrl_messages.SetDefaultStyle(wx.TextAttr("black", wx.Colour(255, 150, 150)))
                 self.text_ctrl_messages.AppendText("Error: Google spreadsheet is not publicly shared or published\n" )
                 self.text_ctrl_messages.SetDefaultStyle(wx.TextAttr("black", "white"))
             self.update_user_game_files_list_items()
         except Exception as e:
-            self.text_ctrl_messages.SetDefaultStyle(wx.TextAttr("black", "red"))
+            self.text_ctrl_messages.SetDefaultStyle(wx.TextAttr("black", wx.Colour(255, 150, 150)))
             self.text_ctrl_messages.AppendText("Error in csv_files_dropped: " + repr(e) +"\n" )
             self.text_ctrl_messages.SetDefaultStyle(wx.TextAttr("black", "white"))
         self.SetCursor(wx.Cursor(wx.CURSOR_DEFAULT))
@@ -2636,7 +2636,7 @@ class QuadStickPreferences(wx.Frame):
             filename = self.list_box_csv_files.GetItem(selection, 1).GetText()
             print(repr(filename))
             if filename == 'prefs.csv': 
-                self.text_ctrl_messages.SetDefaultStyle(wx.TextAttr("black", "red"))
+                self.text_ctrl_messages.SetDefaultStyle(wx.TextAttr("black", wx.Colour(255, 150, 150)))
                 self.text_ctrl_messages.AppendText("Sorry, that is not a game file. \n")
                 self.text_ctrl_messages.SetDefaultStyle(wx.TextAttr("black", "white"))
                 event.Skip()
